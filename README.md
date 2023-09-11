@@ -8,16 +8,18 @@
 
 #### Arch Linux
 
-1. Install [Go](https://go.dev/dl/) programming language compiler:
-
-    - [Go compiler](https://archlinux.org/packages/extra/x86_64/go/):
+1. Install build tools and Go compilers:
 
     ```sh
-    go version || pacman -S --needed --noconfirm go
+    pacman -S --needed --noconfirm binutils make go tinygo
     ```
 
-    - [TinyGo compiler](https://archlinux.org/packages/extra/x86_64/tinygo/):
+## Resources
 
-    ```sh
-    tinygo version || pacman -S --needed --noconfirm tinygo
-    ```
+- Build tools:
+    - [GNU Make](https://www.gnu.org/software/make/)
+    - [GNU Binutils](https://www.gnu.org/software/binutils/)
+
+- Go compilers:
+    - [Go](https://go.dev/dl/)
+    - [TinyGo](https://github.com/tinygo-org/tinygo/)
