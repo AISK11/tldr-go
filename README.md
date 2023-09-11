@@ -8,24 +8,16 @@
 
 #### Arch Linux
 
-1. Install [Go](https://go.dev/dl/) programming language [package](https://archlinux.org/packages/extra/x86_64/go/):
+1. Install [Go](https://go.dev/dl/) programming language compiler:
 
-```sh
-go version || pacman -S --needed --noconfirm go
-```
+    - [Go compiler](https://archlinux.org/packages/extra/x86_64/go/):
 
-### Windows
+    ```sh
+    go version || pacman -S --needed --noconfirm go
+    ```
 
-#### Windows 11
+    - [TinyGo compiler](https://archlinux.org/packages/extra/x86_64/tinygo/):
 
-1. Install [Chocolatey](https://chocolatey.org/install) package manager:
-
-```powershell
-choco -v ; if ("${LASTEXITCODE}" -ne 0) { Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) }
-```
-
-2. Install [Go](https://go.dev/dl/) programming language [package](https://community.chocolatey.org/packages/golang):
-
-```powershell
-go version ; if ("${LASTEXITCODE}" -ne 0) { choco install -fy golang }
-```
+    ```sh
+    tinygo version || pacman -S --needed --noconfirm tinygo
+    ```
