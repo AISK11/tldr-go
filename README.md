@@ -13,6 +13,32 @@
     pacman -S --needed --noconfirm binutils make go tinygo upx
     ```
 
+## Compilation
+
+### Linux
+
+- Compile to Linux AMD64 platform:
+    ```sh
+    EXE="<program>"
+    go fmt main.go
+    GOOS=linux GOARCH=amd64 tinygo build -o "${EXE}" main.go 2> /dev/null \
+        || GOOS=linux GOARCH=amd64 go build -o "${EXE}" main.go
+    strip -s "${EXE}"
+    upx --ultra-brute "${EXE}"
+    ```
+
+### Windows
+
+- Compile to Windows AMD64 platform:
+    ```sh
+    EXE="<program.exe>"
+    go fmt main.go
+    GOOS=windows GOARCH=amd64 tinygo build -o "${EXE}" main.go 2> /dev/null \
+        || GOOS=windows GOARCH=386 go build -o "${EXE}" main.go
+    strip -s "${EXE}"
+    upx --ultra-brute "${EXE}"
+    ```
+
 ## Resources
 
 - Build tools:
