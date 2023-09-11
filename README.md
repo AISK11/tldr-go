@@ -17,7 +17,7 @@
 
 ### Linux
 
-- Compile to Linux AMD64 platform:
+- Compile to Linux amd64 platform:
     ```sh
     EXE='program'
     go fmt main.go
@@ -29,12 +29,12 @@
 
 ### Windows
 
-- Compile to Windows AMD64 platform:
+- Compile to Windows amd64 platform:
     ```sh
     EXE='program.exe'
     go fmt main.go
     GOOS=windows GOARCH=amd64 tinygo build -o "${EXE}" main.go 2> /dev/null \
-        || GOOS=windows GOARCH=386 go build -o "${EXE}" main.go
+        || GOOS=windows GOARCH=amd64 go build -o "${EXE}" main.go
     strip -s "${EXE}"
     upx --ultra-brute "${EXE}"
     ```
