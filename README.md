@@ -19,7 +19,7 @@
 
 - Compile to Linux AMD64 platform:
     ```sh
-    EXE="<program>"
+    EXE='program'
     go fmt main.go
     GOOS=linux GOARCH=amd64 tinygo build -o "${EXE}" main.go 2> /dev/null \
         || GOOS=linux GOARCH=amd64 go build -o "${EXE}" main.go
@@ -31,7 +31,7 @@
 
 - Compile to Windows AMD64 platform:
     ```sh
-    EXE="<program.exe>"
+    EXE='program.exe'
     go fmt main.go
     GOOS=windows GOARCH=amd64 tinygo build -o "${EXE}" main.go 2> /dev/null \
         || GOOS=windows GOARCH=386 go build -o "${EXE}" main.go
