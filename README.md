@@ -8,9 +8,9 @@
 
 #### Arch Linux
 
-1. Install build tools and Go compilers:
+1. Install build tools, Go compilers and packers:
     ```sh
-    pacman -S --needed --noconfirm binutils make go tinygo
+    pacman -S --needed --noconfirm binutils make go tinygo upx
     ```
 
 ## Resources
@@ -21,3 +21,5 @@
 - Go compilers:
     - [Go](https://go.dev)
     - [TinyGo](https://tinygo.org)
+- Packers:
+    - [UPX](https://github.com/upx/upx/)
