@@ -10,32 +10,34 @@
 
 1. Install build tools, Go compilers and packers:
     ```sh
-    pacman -S --needed --noconfirm binutils make go tinygo upx
+    paru -S --needed --noconfirm binutils make go tinygo go-garble upx
     ```
 
-## Compilation
+## Usage
 
-### Linux
-
-- Compile to Linux amd64 platform:
+1. Format source code:
     ```sh
-    EXE='program'
     go fmt main.go
-    GOOS=linux GOARCH=amd64 tinygo build -o "${EXE}" main.go 2> /dev/null \
-        || GOOS=linux GOARCH=amd64 go build -o "${EXE}" main.go
-    strip -s "${EXE}"
-    upx --ultra-brute "${EXE}"
     ```
-
-### Windows
-
-- Compile to Windows amd64 platform:
+2. Set program name and platform target:
+    - Windows (amd64):
+        ```sh
+        export EXE='program.exe'
+        export GOOS='windows'
+        export GOARCH='amd64'
+        ```
+3. Compile executable:
     ```sh
-    EXE='program.exe'
-    go fmt main.go
-    GOOS=windows GOARCH=amd64 tinygo build -o "${EXE}" main.go 2> /dev/null \
-        || GOOS=windows GOARCH=amd64 go build -o "${EXE}" main.go
+    garble -literals -seed=random -tiny build -o "${EXE}" main.go \
+        || tinygo build -o "${EXE}" main.go \
+        || go build -o "${EXE}" main.go
+    ```
+3. Strip symbols:
+    ```sh
     strip -s "${EXE}"
+    ```
+4. Pack executable:
+    ```
     upx --ultra-brute "${EXE}"
     ```
 
@@ -47,5 +49,6 @@
 - Go compilers:
     - [Go](https://go.dev)
     - [TinyGo](https://tinygo.org)
+    - [Garble](https://github.com/burrowers/garble)
 - Packers:
     - [UPX](https://github.com/upx/upx/)
