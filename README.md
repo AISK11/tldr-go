@@ -29,8 +29,8 @@
 3. Compile executable:
     ```sh
     garble -literals -seed=random -tiny build -o "${EXE}" main.go \
-        || tinygo build -o "${EXE}" main.go \
-        || go build -o "${EXE}" main.go
+        || tinygo build -no-debug -o "${EXE}" main.go \
+        || go build -ldflags='-w -s' -o "${EXE}" main.go
     ```
 3. Strip symbols:
     ```sh
