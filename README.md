@@ -27,11 +27,18 @@
         export GOARCH='amd64'
         ```
 3. Compile executable:
-    ```sh
-    garble -literals -seed=random -tiny build -o "${EXE}" main.go \
-        || tinygo build -no-debug -o "${EXE}" main.go \
-        || go build -ldflags='-w -s' -o "${EXE}" main.go
-    ```
+    - Garble compiler (code obfuscation):
+        ```sh
+        garble -literals -seed=random -tiny build -o "${EXE}" main.go
+        ```
+    - TinyGo compiler (small size):
+        ```sh
+        tinygo build -no-debug -o "${EXE}" main.go
+        ```
+    - Go compiler (best compatibility):
+        ```sh
+        go build -ldflags='-w -s' -o "${EXE}" main.go
+        ```
 3. Strip symbols:
     ```sh
     strip -s "${EXE}"
