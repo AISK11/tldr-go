@@ -49,14 +49,14 @@
     ```sh
     strip -ps "${EXE}"
     upx --ultra-brute "${EXE}"
-    RAND="$(tr -dc ' _0-9a-zA-Z' < /dev/urandom | head -c 4)" \
-        ; sed -i "s/UPX[\!0-9]/${RAND}/g" "${EXE}"
-    RAND="$(tr -dc ' _0-9a-zA-Z' < /dev/urandom | head -c "$(strings "${EXE}" \
-        | grep '\$Info: .*http.*\$' | tr -d '\n' | wc -c)")" \
-        ; sed -i "s/\$Info: .*http.*\$/${RAND}/g" "${EXE}"
-    RAND="$(tr -dc ' _0-9a-zA-Z' < /dev/urandom | head -c "$(strings "${EXE}" \
-        | grep '\$Id: .*All Rights Reserved.*\$' | tr -d '\n' | wc -c)")" \
-        ; sed -i "s/\$Id: .*All Rights Reserved.*\$/${RAND}/g" "${EXE}"
+    RAND="$(tr -dc ' _0-9a-zA-Z' < /dev/urandom | head -c 4)"
+    sed -i "s/UPX[\!0-9]/${RAND}/g" "${EXE}"
+    RAND="$(tr -dc ' _0-9a-zA-Z' < /dev/urandom \
+        | head -c "$(strings "${EXE}" | grep '\$Info: .*http.*\$' | tr -d '\n' | wc -c)")"
+    sed -i "s/\$Info: .*http.*\$/${RAND}/g" "${EXE}"
+    RAND="$(tr -dc ' _0-9a-zA-Z' < /dev/urandom \
+        | head -c "$(strings "${EXE}" | grep '\$Id: .*All Rights Reserved.*\$' | tr -d '\n' | wc -c)")"
+    sed -i "s/\$Id: .*All Rights Reserved.*\$/${RAND}/g" "${EXE}"
     ```
 
 ## Resources
