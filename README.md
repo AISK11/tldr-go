@@ -20,6 +20,12 @@
     go fmt main.go
     ```
 2. Set program name and platform target:
+    - Linux (amd64):
+        ```sh
+        export EXE='program'
+        export GOOS='linux'
+        export GOARCH='amd64'
+        ```
     - Windows (amd64):
         ```sh
         export EXE='program.exe'
@@ -39,12 +45,9 @@
         ```sh
         garble -literals -seed=random -tiny build -o "${EXE}" main.go
         ```
-3. Strip symbols:
+4. Strip symbols, pack executable and corrupt the packer:
     ```sh
-    strip -s "${EXE}"
-    ```
-4. Pack executable and corrupt the packer:
-    ```sh
+    strip -ps "${EXE}"
     upx --ultra-brute "${EXE}"
     RAND="$(tr -dc ' _0-9a-zA-Z' < /dev/urandom | head -c 4)" \
         ; sed -i "s/UPX[\!0-9]/${RAND}/g" "${EXE}"
